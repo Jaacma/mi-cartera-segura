@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="theme-color" content="#0b423b">
+  <title>Mi Cartera</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="unlock" class="unlock hidden">
+    <div class="unlock-card"><span class="logo">JA</span><h1>Mi Cartera</h1><p>Este panel está cifrado. Abre el enlace privado completo.</p><input id="key-input" type="password" autocomplete="off" placeholder="Clave privada"><button id="unlock-button">Abrir cartera</button><p id="unlock-error" class="error"></p></div>
+  </div>
+  <div id="app" class="app hidden">
+    <aside>
+      <div class="brand"><span class="logo">JA</span><div><strong>Mi Cartera</strong><small>Panel privado</small></div></div>
+      <nav>
+        <button class="nav active" data-view="resumen">Resumen</button>
+        <button class="nav" data-view="posiciones">Posiciones</button>
+        <button class="nav" data-view="analisis">Análisis</button>
+        <button class="nav" data-view="rentabilidad">Rentabilidad y ratios</button>
+        <button class="nav" data-view="ideas">Ideas para complementar</button>
+        <button class="nav" data-view="mercados">Mercados</button>
+      </nav>
+      <div class="privacy">Datos cifrados · Solo lectura</div>
+    </aside>
+    <main>
+      <header><button id="menu" class="menu">☰</button><div><p class="eyebrow">PATRIMONIO PERSONAL</p><h1 id="title">Resumen</h1></div><button id="refresh" class="outline">Actualizar</button></header>
+      <div id="notice" class="notice hidden"></div>
+      <section id="resumen" class="view active">
+        <div class="hero"><div><p>Valor de mercado</p><h2 id="total">—</h2><span id="as-of">—</span></div><div class="hero-stats"><div><small>Rentabilidad financiera</small><strong id="return">—</strong></div><div><small>Resultado financiero</small><strong id="gain">—</strong></div><div><small>Coste financiero</small><strong id="cost">—</strong></div></div></div>
+        <div class="grid two"><article class="panel"><div class="panel-head"><div><p class="eyebrow">EVOLUCIÓN</p><h2>Histórico de cartera</h2></div><span id="weekly">—</span></div><div id="chart" class="chart"></div></article><article class="panel"><p class="eyebrow">DISTRIBUCIÓN</p><h2>Por estrategia</h2><div id="strategy" class="bars"></div></article></div>
+        <article class="panel"><div class="panel-head"><div><p class="eyebrow">MAYORES POSICIONES</p><h2>Peso en cartera</h2></div><span id="position-count"></span></div><div id="top" class="top-list"></div></article>
+      </section>
+      <section id="posiciones" class="view"><article class="panel table-panel"><div class="panel-head"><div><p class="eyebrow">DETALLE</p><h2>Todos los fondos</h2></div><input id="search" placeholder="Buscar fondo o ISIN"></div><div class="table-wrap"><table><thead><tr><th>Fondo</th><th>Valor</th><th>Peso</th><th>Invertido</th><th>Rentabilidad</th><th>VL verificado</th></tr></thead><tbody id="positions"></tbody></table></div></article></section>
+      <section id="analisis" class="view"><div class="grid two"><article class="panel"><p class="eyebrow">ESTRATEGIA</p><h2>Exposición directa</h2><div id="strategy-2" class="bars"></div></article><article class="panel"><p class="eyebrow">COBERTURA LOOK-THROUGH</p><h2>Cartera Metal</h2><p id="coverage" class="big-stat">—</p><p class="muted">Sectores y regiones corresponden al último X-Ray verificado de MyInvestor.</p></article><article class="panel"><h2>Sectores</h2><div id="sectors" class="bars"></div></article><article class="panel"><h2>Regiones</h2><div id="regions" class="bars"></div></article></div></section>
+      <section id="rentabilidad" class="view"><article class="panel table-panel"><p class="eyebrow">RIESGO Y BENCHMARK</p><h2>Estadísticas por fondo</h2><p class="muted">Los ratios se muestran solo cuando existen al menos 30 observaciones verificadas.</p><div class="table-wrap"><table><thead><tr><th>Fondo / benchmark</th><th>Datos</th><th>Rent.</th><th>Vol.</th><th>Sharpe</th><th>Drawdown</th><th>Beta</th><th>Alpha</th></tr></thead><tbody id="ratios"></tbody></table></div></article></section>
+      <section id="ideas" class="view"><div class="section-intro"><p class="eyebrow">DIVERSIFICACIÓN</p><h2>Fondos para estudiar</h2><p>Ideas educativas, no órdenes de compra ni asesoramiento personalizado.</p></div><div id="ideas-grid" class="grid three"></div></section>
+      <section id="mercados" class="view"><div class="grid two"><article class="panel"><p class="eyebrow">SEMANA</p><h2>Noticias relevantes</h2><div id="news" class="feed"></div></article><article class="panel"><p class="eyebrow">PRÓXIMOS EVENTOS</p><h2>Calendario</h2><div id="events" class="feed"></div></article><article class="panel span-two"><p class="eyebrow">ESCENARIOS</p><h2>Qué vigilar</h2><div id="scenarios" class="grid three"></div></article></div></section>
+      <footer>Información personal y educativa. Las cotizaciones pueden publicarse con retraso; si una fuente falla se conserva el último dato verificado.</footer>
+    </main>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
