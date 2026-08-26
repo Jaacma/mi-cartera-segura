@@ -7,6 +7,7 @@
   <meta name="theme-color" content="#0b423b">
   <title>Mi Cartera</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="metrics.css?v=1">
 </head>
 <body>
   <div id="unlock" class="unlock hidden">
@@ -35,12 +36,24 @@
       </section>
       <section id="posiciones" class="view"><article class="panel table-panel"><div class="panel-head"><div><p class="eyebrow">DETALLE</p><h2>Todos los fondos</h2></div><input id="search" placeholder="Buscar fondo o ISIN"></div><div class="table-wrap"><table><thead><tr><th>Fondo</th><th>Valor</th><th>Peso</th><th>Invertido</th><th>Rentabilidad</th><th>VL verificado</th></tr></thead><tbody id="positions"></tbody></table></div></article></section>
       <section id="analisis" class="view"><div class="grid two"><article class="panel"><p class="eyebrow">ESTRATEGIA</p><h2>Exposición directa</h2><div id="strategy-2" class="bars"></div></article><article class="panel"><p class="eyebrow">COBERTURA LOOK-THROUGH</p><h2>Cartera Metal</h2><p id="coverage" class="big-stat">—</p><p class="muted">Sectores y regiones corresponden al último X-Ray verificado de MyInvestor.</p></article><article class="panel"><h2>Sectores</h2><div id="sectors" class="bars"></div></article><article class="panel"><h2>Regiones</h2><div id="regions" class="bars"></div></article></div></section>
-      <section id="rentabilidad" class="view"><article class="panel table-panel"><p class="eyebrow">RIESGO Y BENCHMARK</p><h2>Estadísticas por fondo</h2><p class="muted">Los ratios se muestran solo cuando existen al menos 30 observaciones verificadas.</p><div class="table-wrap"><table><thead><tr><th>Fondo / benchmark</th><th>Datos</th><th>Rent.</th><th>Vol.</th><th>Sharpe</th><th>Drawdown</th><th>Beta</th><th>Alpha</th></tr></thead><tbody id="ratios"></tbody></table></div></article></section>
+      <section id="rentabilidad" class="view">
+        <div class="section-intro"><p class="eyebrow">RENTABILIDAD Y RIESGO</p><h2>Análisis cuantitativo de los fondos</h2><p>Calculado exclusivamente con valores liquidativos verificados. Las cifras pendientes aparecen como “—”.</p></div>
+        <div class="metric-grid">
+          <article class="metric-card"><small>Histórico disponible</small><strong id="history-coverage">—</strong><span>máximo por fondo</span></article>
+          <article class="metric-card"><small>Posiciones efectivas</small><strong id="effective-positions">—</strong><span>diversificación por pesos</span></article>
+          <article class="metric-card"><small>Peso de las 5 mayores</small><strong id="top5-weight">—</strong><span>concentración de cartera</span></article>
+          <article class="metric-card"><small>Índice HHI</small><strong id="hhi">—</strong><span>menor implica más diversificación</span></article>
+        </div>
+        <article class="panel table-panel"><div class="panel-head"><div><p class="eyebrow">RENTABILIDADES</p><h2>Por periodos</h2></div><span class="pill">VL del fondo</span></div><p class="muted">Rentabilidad del valor liquidativo, independiente del momento de tus aportaciones.</p><div class="table-wrap"><table class="wide"><thead><tr><th>Fondo</th><th>Histórico</th><th>1 mes</th><th>3 meses</th><th>6 meses</th><th>1 año</th><th>Total serie</th><th>Anualizada</th></tr></thead><tbody id="performance"></tbody></table></div></article>
+        <article class="panel table-panel"><div class="panel-head"><div><p class="eyebrow">RIESGO</p><h2>Ratios estadísticos</h2></div><span class="pill">Mínimo 30 VL</span></div><div class="table-wrap"><table class="wide"><thead><tr><th>Fondo</th><th>Volatilidad</th><th>Sharpe</th><th>Sortino</th><th>Máx. drawdown</th><th>VaR 95% diario</th><th>Días positivos</th><th>Mejor día</th><th>Peor día</th></tr></thead><tbody id="risk-ratios"></tbody></table></div></article>
+        <article class="panel table-panel"><div class="panel-head"><div><p class="eyebrow">BENCHMARKS</p><h2>Comparación relativa</h2></div><span class="pill neutral">Sin aproximaciones</span></div><p class="muted">Alpha, beta y correlación solo se publicarán cuando exista una serie homogénea y verificada del índice correspondiente.</p><div class="table-wrap"><table class="wide"><thead><tr><th>Fondo</th><th>Benchmark asignado</th><th>Alpha</th><th>Beta</th><th>Correlación</th><th>Tracking error</th><th>Information ratio</th><th>Estado</th></tr></thead><tbody id="benchmarks"></tbody></table></div></article>
+        <article class="panel glossary"><p class="eyebrow">GUÍA RÁPIDA</p><h2>Cómo leer los ratios</h2><div class="grid three"><div><strong>Volatilidad</strong><p>Cuánto fluctúa el fondo. Menor no siempre significa mejor.</p></div><div><strong>Sharpe</strong><p>Rentabilidad adicional por unidad de riesgo total.</p></div><div><strong>Sortino</strong><p>Como Sharpe, pero penaliza principalmente las caídas.</p></div><div><strong>Drawdown</strong><p>Mayor caída desde un máximo hasta el mínimo posterior.</p></div><div><strong>VaR 95%</strong><p>Pérdida diaria que históricamente solo se superó aproximadamente un 5% de los días.</p></div><div><strong>Posiciones efectivas</strong><p>Número equivalente de posiciones iguales según la concentración real.</p></div></div></article>
+      </section>
       <section id="ideas" class="view"><div class="section-intro"><p class="eyebrow">DIVERSIFICACIÓN</p><h2>Fondos para estudiar</h2><p>Ideas educativas, no órdenes de compra ni asesoramiento personalizado.</p></div><div id="ideas-grid" class="grid three"></div></section>
       <section id="mercados" class="view"><div class="grid two"><article class="panel"><p class="eyebrow">SEMANA</p><h2>Noticias relevantes</h2><div id="news" class="feed"></div></article><article class="panel"><p class="eyebrow">PRÓXIMOS EVENTOS</p><h2>Calendario</h2><div id="events" class="feed"></div></article><article class="panel span-two"><p class="eyebrow">ESCENARIOS</p><h2>Qué vigilar</h2><div id="scenarios" class="grid three"></div></article></div></section>
       <footer>Información personal y educativa. Las cotizaciones pueden publicarse con retraso; si una fuente falla se conserva el último dato verificado.</footer>
     </main>
   </div>
-  <script type="module" src="app.js?v=3"></script>
+  <script type="module" src="app.js?v=4"></script>
 </body>
 </html>
