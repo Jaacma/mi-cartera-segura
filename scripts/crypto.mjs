@@ -1,0 +1,4 @@
+import crypto from 'node:crypto';
+
+export function encryptJson(value,keyHex){const key=Buffer.from(keyHex,'hex');if(key.length!==32)throw new Error('DASHBOARD_KEY debe tener 64 caracteres hexadecimales');const iv=crypto.randomBytes(12);const cipher=crypto.createCipheriv('aes-256-gcm',key,iv);const encrypted=Buffer.concat([cipher.update(JSON.stringify(value),'utf8'),cipher.final(),cipher.getAuthTag()]);return{v:1,alg:'A256GCM',iv:iv.toString('base64'),data:encrypted.toString('base64')}}
+export function decryptJson(payload,keyHex){const key=Buffer.from(keyHex,'hex');const packed=Buffer.from(payload.data,'base64');const tag=packed.subarray(packed.length-16);const ciphertext=packed.subarray(0,-16);const decipher=crypto.createDecipheriv('aes-256-gcm',key,Buffer.from(payload.iv,'base64'));decipher.setAuthTag(tag);return JSON.parse(Buffer.concat([decipher.update(ciphertext),decipher.final()]).toString('utf8'))}
