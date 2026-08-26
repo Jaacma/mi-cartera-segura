@@ -3,6 +3,11 @@ on:
   schedule:
     - cron: "15 7 * * *"
   workflow_dispatch:
+  push:
+    paths:
+      - "docs/index.html"
+      - "docs/app.js"
+      - "docs/styles.css"
 permissions:
   contents: write
   pages: write
@@ -28,10 +33,12 @@ jobs:
         shell: bash
         run: echo "value=daily" >> "$GITHUB_OUTPUT"
       - name: Actualizar cartera o enviar informe
+        if: github.event_name != 'push'
         run: node scripts/update.mjs
         env:
           TASK: ${{ steps.task.outputs.value }}
       - name: Guardar datos cifrados
+        if: github.event_name != 'push'
         run: |
           git config user.name "mi-cartera-bot"
           git config user.email "actions@users.noreply.github.com"
