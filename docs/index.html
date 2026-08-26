@@ -8,10 +8,11 @@
   <title>Mi Cartera</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="metrics.css?v=1">
+  <style>.unlock-card input[readonly]{background:#f0f4f2;color:#6c7c79}.unlock-card button:disabled{opacity:.55;cursor:wait}.unlock-card small{display:block;color:#6c7c79;font-size:10px;margin-top:16px}.unlock-card .error{min-height:18px;font-size:12px}</style>
 </head>
 <body>
   <div id="unlock" class="unlock hidden">
-    <div class="unlock-card"><span class="logo">JA</span><h1>Mi Cartera</h1><p>Este panel está cifrado. Abre el enlace privado completo.</p><input id="key-input" type="password" autocomplete="off" placeholder="Clave privada"><button id="unlock-button">Abrir cartera</button><p id="unlock-error" class="error"></p></div>
+    <div class="unlock-card"><span class="logo">JA</span><h1>Mi Cartera</h1><p>Acceso exclusivo para Javier. Verifica tu correo y descifra la cartera en este dispositivo.</p><div id="auth-step"><input id="auth-email" type="email" autocomplete="email" placeholder="Tu correo personal"><button id="auth-button">Enviar enlace de acceso</button></div><div id="key-step" class="hidden"><input id="key-input" type="password" autocomplete="off" placeholder="Clave privada"><button id="unlock-button">Descifrar cartera</button></div><p id="unlock-error" class="error"></p><small>Correo autorizado + cifrado AES-256-GCM</small></div>
   </div>
   <div id="app" class="app hidden">
     <aside>
@@ -54,6 +55,6 @@
       <footer>Información personal y educativa. Las cotizaciones pueden publicarse con retraso; si una fuente falla se conserva el último dato verificado.</footer>
     </main>
   </div>
-  <script type="module" src="app.js?v=4"></script>
+  <script type="module" src="app.js?v=5"></script>
 </body>
 </html>
