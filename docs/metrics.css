@@ -1,0 +1,79 @@
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.metric-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 7px;
+}
+
+.metric-card small,
+.metric-card span {
+  color: var(--muted);
+}
+
+.metric-card strong {
+  font-size: 28px;
+}
+
+.metric-card span {
+  font-size: 11px;
+}
+
+.pill {
+  background: #e7f5f2;
+  color: var(--green);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.pill.neutral {
+  background: #eef1f0;
+  color: var(--muted);
+}
+
+table.wide {
+  min-width: 1180px;
+}
+
+.status-cell {
+  max-width: 260px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.glossary .grid {
+  margin-top: 8px;
+}
+
+.glossary .grid div {
+  background: #f2f8f6;
+  border-radius: 13px;
+  padding: 15px;
+}
+
+.glossary p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .metric-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .metric-card strong {
+    font-size: 23px;
+  }
+}
