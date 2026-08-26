@@ -1,5 +1,5 @@
 const DAY=86_400_000;
-const finite=value=>Number.isFinite(Number(value));
+const finite=value=>value!==null&&value!==undefined&&value!==''&&Number.isFinite(Number(value));
 const round=(value,digits=4)=>finite(value)?Number(Number(value).toFixed(digits)):null;
 const mean=values=>values.length?values.reduce((sum,value)=>sum+value,0)/values.length:null;
 const stdev=values=>{if(values.length<2)return null;const avg=mean(values);return Math.sqrt(values.reduce((sum,value)=>sum+(value-avg)**2,0)/(values.length-1))};
