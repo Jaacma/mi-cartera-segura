@@ -1,13 +1,13 @@
 const state={data:null};
 const SUPABASE_URL='https://jwwaepweihddrtxnksuj.supabase.co';
 const SUPABASE_KEY='sb_publishable_5Dt8VoAePD4Y-xMQwDmU3A_S7r6It8Z';
-const SESSION_STORAGE_KEY='miDineroAuthSession';
+const SESSION_STORAGE_KEY='miCarteraAuthSession';
 let authSession=JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY)||'null');
 const euro=new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'});
 const num=new Intl.NumberFormat('es-ES',{maximumFractionDigits:4});
 const $=s=>document.querySelector(s);const $$=s=>[...document.querySelectorAll(s)];
 const money=v=>euro.format(Number(v||0));const pct=v=>v==null?'Pendiente':`${v>=0?'+':''}${Number(v).toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})} %`;
-const esc=v=>String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','"':'&quot;'}[c]));
+const esc=v=>String(v??'').replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','\"':'&quot;'}[c]));
 const fmtDate=v=>v?new Date(`${v}T12:00:00`).toLocaleDateString('es-ES'): '—';
 const tone=v=>Number(v)>=0?'positive':'negative';
 
